@@ -1,5 +1,26 @@
 import { useState } from 'react'
 
+const Statistics = (props) => {
+  if (props.good + props.neutral + props.bad === 0) {
+    return (
+      <div>
+        <p>No feedback given</p>
+      </div>
+    )
+  }
+  else {
+    return (
+      <div>
+        <p>good {props.good}</p>
+        <p>neutral {props.neutral}</p>
+        <p>bad {props.bad}</p>
+        <p>all {props.good + props.neutral + props.bad}</p>
+        <p>average {(((props.good*1)+(props.neutral*0)-(props.bad*1))/(props.good+props.neutral+props.bad))}</p>
+        <p>positive {((props.good*1)/(props.good+props.neutral+props.bad))*100}%</p>
+      </div>
+    )
+  }
+}
 const App = () => {
   // guarda los clics de cada botón en su propio estado
   const [good, setGood] = useState(0)
@@ -9,15 +30,12 @@ const App = () => {
 
   return (
     <div>
+      <h2>Give feedback</h2>
       <button onClick={() => setGood(good + 1)}>good</button>
       <button onClick={() => setNeutral(neutral + 1)}>neutral</button>
       <button onClick={() => setBad(bad + 1)}>bad</button>
-      <p>good {good}</p>
-      <p>neutral {neutral}</p>
-      <p>bad {bad}</p>
-      <p>all {good + neutral + bad}</p>
-      <p>average {good + neutral + bad === 0 ? 0 : (((good*1)+(neutral*0)-(bad*1))/(good+neutral+bad))}</p>
-      <p>positive {good + neutral + bad === 0 ? 0 : ((good*1)/(good+neutral+bad))*100}%</p>
+      <h2>Statistics</h2>
+      <Statistics good={good} neutral={neutral} bad={bad}/>
     </div>
   )
 }
