@@ -1,5 +1,3 @@
-
-
 export const Course = ({course}) => {
   console.log(course)
   const Header = ({name}) => {
@@ -19,11 +17,10 @@ export const Course = ({course}) => {
   
   const Content = ({parts}) => {
     console.log(parts)
-    return parts.map(part => {
-      return (
+    return parts.map(part => (
         <Part key={part.id} name={part.name} exercises={part.exercises} />
       )
-    })    
+    )    
   }
   
   
