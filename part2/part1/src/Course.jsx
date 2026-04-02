@@ -27,19 +27,17 @@ export const Course = ({course}) => {
   }
   
   
-  /*
-  const Total = (parts) => {
-    console.log(props)
+  const Total = ({parts}) => {
+    console.log(parts)
     return (
-      <p>Number of exercises {props.total}</p>
+      <p><strong>Total of {parts.reduce((sum,part) => sum+part.exercises, 0 )} exercises</strong></p>
     )
   }
-  */
     return (
         <div>
             <Header name={course.name} />
             <Content parts={course.parts} />
-            {/* <Total parts={course.parts} /> */}
+            <Total parts={course.parts} />
         </div>
     )
 }
